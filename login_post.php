@@ -1,8 +1,7 @@
 <?php
 
-include 'inc/mysql.php';
-
 session_start();
+include 'inc/mysql.php';
 
 if (!$_POST) {
 	header('Location: login.php');
@@ -48,8 +47,9 @@ if ( $result = mysqli_query($link, $query)) {
 			$_SESSION['logged'] = true;
 			$_SESSION['current_user'] = $user;
 			$_SESSION['success'] = 'Você entrou com sucesso!';
+			header('Location: logout.php');
 		}else{
-			$_SESSION['errors'][] = 'Senha inválida!';;
+			$_SESSION['errors'][] = 'Senha inválida!';
 		}
 
 		exit;
@@ -61,9 +61,10 @@ if ( $result = mysqli_query($link, $query)) {
 
 	$_SESSION['success'] = 'Novo usuário salvo com sucesso!';
 
+
 }else{
 	$_SESSION['errors'][] = 'Ocorreu um problema ao salvar o usuário. Favor tentar novamente ou entrar em contato.';
 }
 
 header('Location: login.php');
-return;
+exit;

@@ -2,6 +2,7 @@
 
 	session_start(); 
 	include 'inc/mixin.php';
+	redirect_not_logged();
 	
 
 	$site = array(

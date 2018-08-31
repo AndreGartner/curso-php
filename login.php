@@ -39,6 +39,8 @@ include 'layout/header.php';
 		</div>
 
 	</form>
+
+	
 </div>
 
 <?php
