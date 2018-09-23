@@ -38,29 +38,24 @@ $query = 'select * from users where email like "'.$email.'" limit 1 ';
 
 
 if ( $result = mysqli_query($link, $query)) {
-
 	
-
 	if ($user = mysqli_fetch_assoc($result)) {
 
 		if (password_verify($password, $user['Password'])) {
 			$_SESSION['logged'] = true;
 			$_SESSION['current_user'] = $user;
 			$_SESSION['success'] = 'Você entrou com sucesso!';
-			header('Location: logout.php');
+			header('Location: users.php');
+			exit;
 		}else{
 			$_SESSION['errors'][] = 'Senha inválida!';
+			header('Location: login.php');
+			exit;
 		}
 
-		exit;
-	
-}else{
-	$_SESSION['errors'][] = 'Nenhum usuário encontrado com esse Endereço de email!';
-}
-
-
-	$_SESSION['success'] = 'Novo usuário salvo com sucesso!';
-
+	}else{
+		$_SESSION['errors'][] = 'Nenhum usuário encontrado com esse Endereço de email!';
+	}
 
 }else{
 	$_SESSION['errors'][] = 'Ocorreu um problema ao salvar o usuário. Favor tentar novamente ou entrar em contato.';

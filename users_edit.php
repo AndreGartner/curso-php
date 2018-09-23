@@ -43,11 +43,19 @@ include 'layout/header.php';
 
 	<p>Atualize as informações abaixo</p>
 
-	<form action="users_edit_post.php" method="get">
+	<form action="users_edit_post.php" method="post">
+
+		<input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+
+		<div>
+			<label>Nome</label>
+			<input type="text" name="name" value="<?php echo $data->Name ?>">
+
+		</div>
 
 		<div>
 			<label>E-mail</label>
-			<input type="text" name="email" value="<?php echo $data->Name ?>">
+			<input type="text" name="email" value="<?php echo $data->email ?>">
 		</div>
 
 		<div>

@@ -50,6 +50,15 @@ include 'layout/header.php';
 							<td>
 								
 								<a href="users_edit.php?id=<?php echo $user->ID?> " class="button">Editar</a>
+								
+								<form id="delete-user-<?php echo $user->ID ?>" action="user_delete.php" method="post">
+
+									<input type="hidden" name="id" value="<?php echo $user->ID?>">
+									<button type="button" class="button" onclick="deleteUser('Você confirma a exclusão do usuário <?php echo $user->Name ?>?', <?php echo $user->ID ?>)">Excluir</button>
+
+								</form>
+
+								
 
 							</td>
 						</tr>
@@ -60,6 +69,14 @@ include 'layout/header.php';
 		<?php endif ?>	
 
 </div>
+
+<script type="text/javascript">
+	function deleteUser(message, userId){
+		if (confirm(message)) {
+			document.getElementById('delete-user-'+ userId).submit();
+		}
+	}
+</script>
 
 <?php
 

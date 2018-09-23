@@ -18,4 +18,4 @@ redirect_not_logged();
  	header('Location: login.php');
  	return;
  	
- }
+ 
